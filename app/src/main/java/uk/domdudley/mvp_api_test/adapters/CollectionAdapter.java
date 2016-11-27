@@ -24,14 +24,14 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
 
         TextView movieTitle;
         TextView releaseDate;
-        TextView imdbRating;
+        TextView certificate;
         public ViewHolder(View v) {
             super(v);
             view = v;
             view.setOnClickListener(this);
             movieTitle = (TextView)v.findViewById(R.id.card_movietitle);
             releaseDate = (TextView)v.findViewById(R.id.card_movierelease);
-            imdbRating = (TextView)v.findViewById(R.id.card_imdb);
+            certificate = (TextView)v.findViewById(R.id.card_certificate);
         }
 
         @Override
@@ -58,7 +58,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     public void onBindViewHolder(CollectionAdapter.ViewHolder holder, int position) {
         holder.movieTitle.setText(collection.get(position).getTitle());
         holder.releaseDate.setText(collection.get(position).getReleased());
-        holder.imdbRating.setText(collection.get(position).getImdbRating());
+        holder.certificate.setText(collection.get(position).getRated());
     }
 
     @Override

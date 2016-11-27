@@ -32,7 +32,7 @@
                 android:layout_below="@id/card_movietitle"/>
 
             <TextView
-                android:id="@+id/card_imdb"
+                android:id="@+id/card_certificate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="imdb rating"
