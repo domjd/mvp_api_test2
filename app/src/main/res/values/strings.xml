@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mvp_api_test</string>
+    <string name="title_activity_collection">collection</string>
+</resources>
