@@ -25,6 +25,7 @@ import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Response;
 import uk.domdudley.mvp_api_test.ItemClickListener;
+import uk.domdudley.mvp_api_test.PosterBitmap;
 import uk.domdudley.mvp_api_test.R;
 import uk.domdudley.mvp_api_test.models.Movie;
 import uk.domdudley.mvp_api_test.presenters.MoviePresenter;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
             else
                 rbMetacritic.setRating(0);
 
-            new PosterBitmap().execute(loadedMovie.getPoster());
+            new PosterBitmap(ivPoster).execute(loadedMovie.getPoster());
 
             Toast.makeText(this, "Loaded movie: " + loadedMovie.getResponse(), Toast.LENGTH_LONG).show();
 
@@ -113,23 +114,4 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         tvMovieTitle.setText("FAIL");
     }
 
-    public class PosterBitmap extends AsyncTask<String, Void, Bitmap>{
-        @Override
-        protected Bitmap doInBackground(String... params) {
-           try {
-                Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(params[0]).getContent());
-               return bitmap;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            ivPoster.setImageBitmap(bitmap);
-        }
-    }
 }
