@@ -1,18 +1,13 @@
 package uk.domdudley.mvp_api_test.models;
 
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.widget.Adapter;
-
-import java.util.List;
-import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import uk.domdudley.mvp_api_test.MovieService;
+import uk.domdudley.mvp_api_test.tools.MovieService;
 import uk.domdudley.mvp_api_test.presenters.MovieInteractorFinshedListener;
 
 /**

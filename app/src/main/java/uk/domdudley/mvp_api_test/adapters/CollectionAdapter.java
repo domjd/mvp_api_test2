@@ -6,15 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import io.realm.Realm;
 import io.realm.RealmResults;
-import uk.domdudley.mvp_api_test.ItemClickListener;
+import uk.domdudley.mvp_api_test.tools.ItemClickListener;
 import uk.domdudley.mvp_api_test.R;
 import uk.domdudley.mvp_api_test.models.Movie;
+import uk.domdudley.mvp_api_test.tools.ItemTouchHelperAdapter;
 
 /**
  * Created by Dom on 26/11/2016.
  */
-public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.ViewHolder> {
+public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
     private final RealmResults<Movie> collection;
     private final ItemClickListener listener;
@@ -64,5 +66,20 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     @Override
     public int getItemCount() {
         return collection.size();
+    }
+
+    @Override
+    public void onItemMoved(int fromPosition, int toPosition) {
+
+    }
+
+    @Override
+    public void onItemRemoved(int position) {
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        collection.deleteFromRealm(position);
+        realm.commitTransaction();
+        notifyItemRemoved(position);
     }
 }

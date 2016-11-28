@@ -1,4 +1,4 @@
-package uk.domdudley.mvp_api_test;
+package uk.domdudley.mvp_api_test.tools;
 
 import android.database.Observable;
 

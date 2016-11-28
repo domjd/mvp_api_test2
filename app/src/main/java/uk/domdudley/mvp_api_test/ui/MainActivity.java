@@ -1,31 +1,18 @@
 package uk.domdudley.mvp_api_test.ui;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import io.realm.Realm;
-import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Response;
-import uk.domdudley.mvp_api_test.ItemClickListener;
-import uk.domdudley.mvp_api_test.PosterBitmap;
+import uk.domdudley.mvp_api_test.tools.PosterBitmap;
 import uk.domdudley.mvp_api_test.R;
 import uk.domdudley.mvp_api_test.models.Movie;
 import uk.domdudley.mvp_api_test.presenters.MoviePresenter;

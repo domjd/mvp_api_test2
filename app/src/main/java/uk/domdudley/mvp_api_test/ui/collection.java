@@ -4,29 +4,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.EditText;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import uk.domdudley.mvp_api_test.ItemClickListener;
+import uk.domdudley.mvp_api_test.tools.ItemClickListener;
 import uk.domdudley.mvp_api_test.R;
 import uk.domdudley.mvp_api_test.adapters.CollectionAdapter;
 import uk.domdudley.mvp_api_test.models.Movie;
+import uk.domdudley.mvp_api_test.tools.ItemTouchHelperCallBack;
 
 public class collection extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView collectionRecycler;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter collectionAdapter;
+    private CollectionAdapter collectionAdapter;
 
     RealmResults<Movie> collection;
 
@@ -56,6 +55,10 @@ public class collection extends AppCompatActivity implements ItemClickListener {
 
         collectionAdapter = new CollectionAdapter(collection, this);
         collectionRecycler.setAdapter(collectionAdapter);
+
+        ItemTouchHelper.Callback callback = new ItemTouchHelperCallBack(collectionAdapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(collectionRecycler);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
