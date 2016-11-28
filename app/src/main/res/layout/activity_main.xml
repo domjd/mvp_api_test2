@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -40,6 +41,26 @@
             android:id="@+id/releaseDateTxt"
             android:layout_below="@+id/movieTitleTxt"
             android:layout_alignStart="@+id/movieTitleTxt"
+            android:paddingStart="10dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Medium Text"
+            android:id="@+id/genreTxt"
+            android:layout_below="@+id/releaseDateTxt"
+            android:layout_alignStart="@+id/movieTitleTxt"
+            android:paddingStart="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/countryTxt"
+            android:layout_below="@+id/genreTxt"
+            android:layout_alignStart="@+id/movieTitleTxt"
             android:paddingStart="10dp" />
 
         <TextView
@@ -51,60 +72,119 @@
             android:layout_below="@+id/posterImg"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="IMDBb Rating"
-            android:id="@+id/imdbLabel"
-            android:paddingTop="10dp"
-            android:layout_below="@+id/plotTxt"
-            android:layout_centerHorizontal="true" />
 
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imdbRating"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:numStars="10"
-            android:rating="2.4"
-            android:stepSize="0.1"
-           android:layout_below="@id/imdbLabel"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="MetaScore"
-            android:id="@+id/metaLabel"
-            android:paddingTop="10dp"
-            android:layout_below="@+id/imdbRating"
-            android:layout_centerHorizontal="true" />
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/metaRating"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:numStars="10"
-            android:rating="2.4"
-            android:stepSize="0.1"
-            android:layout_below="@id/metaLabel"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"/>
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add to collection"
-            android:id="@+id/addtocolllectionBtn"
-            android:layout_below="@+id/releaseDateTxt"
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="27dp"
-            android:layout_toEndOf="@+id/metaLabel" />
+            android:layout_toEndOf="@+id/posterImg"
+            android:layout_below="@+id/releaseDateTxt"
+            android:layout_above="@+id/plotTxt"
+            android:paddingTop="60dp"
+            android:id="@+id/tableLayout">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imdbRating"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:text="IMDBb Rating"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingStart="10dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/metaRating"
+                    android:text="MetaScore"
+                    android:layout_below="@id/imdbRating"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingStart="10dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:text="Add to collection"
+                    android:id="@+id/addtocolllectionBtn"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_column="0" />
+            </TableRow>
+
+        </TableLayout>
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/plotTxt"
+            android:layout_marginTop="23dp"
+            android:layout_alignEnd="@+id/tableLayout">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/directorTxt"
+                android:text="Director: "
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/actorsTxt"
+                android:text="Actors: "
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/writersTxt"
+                android:text="Writers: "
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/awardsTxt"
+                android:text="Awards: "
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </TableRow>
+
+
+    </TableLayout>
 
 
     </RelativeLayout>

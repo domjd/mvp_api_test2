@@ -38,8 +38,14 @@ public class MainActivity extends AppCompatActivity implements MovieView {
     TextView tvMovieReleaseDate;
     TextView tvPlot;
     ImageView ivPoster;
-    RatingBar rbIMDBRating;
-    RatingBar rbMetacritic;
+    TextView tvIMDBRating;
+    TextView tvMetacritic;
+    TextView tvActors;
+    TextView tvWriters;
+    TextView tvGenre;
+    TextView tvDirector;
+    TextView tvAwards;
+    TextView tvCountry;
 
     Button btnAddCollection;
     Realm realm;
@@ -60,8 +66,14 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         tvMovieReleaseDate = (TextView)findViewById(R.id.releaseDateTxt);
         tvPlot = (TextView)findViewById(R.id.plotTxt);
         ivPoster = (ImageView)findViewById(R.id.posterImg);
-        rbIMDBRating = (RatingBar)findViewById(R.id.imdbRating);
-        rbMetacritic = (RatingBar)findViewById(R.id.metaRating);
+        tvIMDBRating = (TextView) findViewById(R.id.imdbRating);
+        tvMetacritic = (TextView) findViewById(R.id.metaRating);
+        tvActors = (TextView) findViewById(R.id.actorsTxt);
+        tvWriters = (TextView) findViewById(R.id.writersTxt);
+        tvGenre = (TextView) findViewById(R.id.genreTxt);
+        tvDirector = (TextView) findViewById(R.id.directorTxt);
+        tvAwards = (TextView) findViewById(R.id.awardsTxt);
+        tvCountry = (TextView) findViewById(R.id.countryTxt);
 
         btnAddCollection = (Button)findViewById(R.id.addtocolllectionBtn);
         btnAddCollection.setOnClickListener(new View.OnClickListener() {
@@ -89,14 +101,14 @@ public class MainActivity extends AppCompatActivity implements MovieView {
             tvMovieTitle.setText(loadedMovie.getTitle());
             tvMovieReleaseDate.setText(loadedMovie.getReleased());
             tvPlot.setText(loadedMovie.getPlot());
-            rbIMDBRating.setIsIndicator(true);
-            rbIMDBRating.setRating(Float.valueOf(loadedMovie.getImdbRating()));
-            rbMetacritic.isIndicator();
-
-            if(android.text.TextUtils.isDigitsOnly(loadedMovie.getMetascore()))
-                rbMetacritic.setRating(Float.valueOf(loadedMovie.getMetascore()) / 10f);
-            else
-                rbMetacritic.setRating(0);
+            tvIMDBRating.setText(tvIMDBRating.getText().toString() + ": " + loadedMovie.getImdbRating());
+            tvMetacritic.setText(tvMetacritic.getText().toString() + ": " + loadedMovie.getMetascore());
+            tvActors.setText(tvActors.getText().toString() + loadedMovie.getActors());
+            tvWriters.setText(tvWriters.getText().toString() + loadedMovie.getWriter());
+            tvDirector.setText(tvDirector.getText().toString() + loadedMovie.getDirector());
+            tvAwards.setText(tvAwards.getText().toString() + loadedMovie.getAwards());
+            tvCountry.setText(loadedMovie.getCountry());
+            tvGenre.setText(loadedMovie.getGenre());
 
             new PosterBitmap(ivPoster).execute(loadedMovie.getPoster());
 
