@@ -1,9 +1,11 @@
 package uk.domdudley.mvp_api_test.adapters;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.realm.Realm;
@@ -12,6 +14,7 @@ import uk.domdudley.mvp_api_test.tools.ItemClickListener;
 import uk.domdudley.mvp_api_test.R;
 import uk.domdudley.mvp_api_test.models.Movie;
 import uk.domdudley.mvp_api_test.tools.ItemTouchHelperAdapter;
+import uk.domdudley.mvp_api_test.tools.PosterBitmap;
 
 /**
  * Created by Dom on 26/11/2016.
@@ -27,6 +30,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         TextView movieTitle;
         TextView releaseDate;
         TextView certificate;
+
+        //ImageView moviePoster;
+
         public ViewHolder(View v) {
             super(v);
             view = v;
@@ -34,6 +40,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
             movieTitle = (TextView)v.findViewById(R.id.card_movietitle);
             releaseDate = (TextView)v.findViewById(R.id.card_movierelease);
             certificate = (TextView)v.findViewById(R.id.card_certificate);
+
+            //movieTitle = (TextView)v.findViewById(R.id.movieName_grid);
+            //moviePoster = (ImageView)v.findViewById(R.id.moviePoster);
         }
 
         @Override
@@ -61,6 +70,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         holder.movieTitle.setText(collection.get(position).getTitle());
         holder.releaseDate.setText(collection.get(position).getReleased());
         holder.certificate.setText(collection.get(position).getRated());
+
+/*        holder.movieTitle.setText(collection.get(position).getTitle());
+        new PosterBitmap(holder.moviePoster).execute(collection.get(position).getPoster());*/
     }
 
     @Override
