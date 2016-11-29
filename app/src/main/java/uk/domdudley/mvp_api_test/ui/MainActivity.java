@@ -1,11 +1,14 @@
 package uk.domdudley.mvp_api_test.ui;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
 
     Movie loadedMovie;
 
+    ProgressDialog loadingMovie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
 
         Realm.init(this);
         realm = Realm.getDefaultInstance();
+
+        loadingMovie = ProgressDialog.show(this,"Loading Movie...",null);
 
         tvMovieTitle = (TextView) findViewById(R.id.movieTitleTxt);
         tvMovieReleaseDate = (TextView)findViewById(R.id.releaseDateTxt);
@@ -100,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements MovieView {
             new PosterBitmap(ivPoster).execute(loadedMovie.getPoster());
 
             Toast.makeText(this, "Loaded movie: " + loadedMovie.getResponse(), Toast.LENGTH_LONG).show();
+            RelativeLayout rl = (RelativeLayout) findViewById(R.id.movieContentLayout);
+            rl.setVisibility(View.VISIBLE);
+            loadingMovie.dismiss();
 
         }catch (Exception e){
             Toast.makeText(this, "Error loading movie: " + loadedMovie.getResponse(), Toast.LENGTH_LONG).show();
@@ -113,4 +123,8 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         tvMovieTitle.setText("FAIL");
     }
 
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
 }

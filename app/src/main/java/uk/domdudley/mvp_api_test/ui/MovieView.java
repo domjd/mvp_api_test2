@@ -1,5 +1,7 @@
 package uk.domdudley.mvp_api_test.ui;
 
+import android.content.Context;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -11,4 +13,5 @@ import uk.domdudley.mvp_api_test.models.Movie;
 public interface MovieView {
     void onMovieLoadedSuccess(Call movie, Response response);
     void onMovieLoadedFailure(Call movie, Throwable t);
+    Context getContext();
 }

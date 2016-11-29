@@ -35,6 +35,12 @@ public class MovieInteractor implements Callback<Movie> {
         movie.enqueue(this);
     }
 
+    public void loadMovieByID(String IMDBID){
+        MovieService movieService = retrofit().create(MovieService.class);
+        Call<Movie> movie = movieService.getByIMDBID(IMDBID);
+        movie.enqueue(this);
+    }
+
     @Override
     public void onResponse(Call<Movie> call, Response<Movie> response) {
         Log.v("STATUS:", "SUCCESS");

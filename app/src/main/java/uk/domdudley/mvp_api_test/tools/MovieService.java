@@ -15,4 +15,7 @@ import uk.domdudley.mvp_api_test.models.Movie;
 public interface MovieService {
     @GET("/?&plot=short&r=json")
     Call<Movie> getByTitle(@Query("t") String title);
+
+    @GET("/?&plot=short&r=json")
+    Call<Movie> getByIMDBID(@Query("i") String imdbid);
 }
