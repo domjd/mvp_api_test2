@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
 
     Movie loadedMovie;
 
-    ProgressDialog loadingMovie;
+    ProgressDialog loadingMovieDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
         Realm.init(this);
         realm = Realm.getDefaultInstance();
 
-        loadingMovie = ProgressDialog.show(this,"Loading Movie...",null);
+        loadingMovieDialog = ProgressDialog.show(this,"Loading Movie...",null);
 
         tvMovieTitle = (TextView) findViewById(R.id.movieTitleTxt);
         tvMovieReleaseDate = (TextView)findViewById(R.id.releaseDateTxt);
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements MovieView {
             Toast.makeText(this, "Loaded movie: " + loadedMovie.getResponse(), Toast.LENGTH_LONG).show();
             RelativeLayout rl = (RelativeLayout) findViewById(R.id.movieContentLayout);
             rl.setVisibility(View.VISIBLE);
-            loadingMovie.dismiss();
+            loadingMovieDialog.dismiss();
 
         }catch (Exception e){
             Toast.makeText(this, "Error loading movie: " + loadedMovie.getResponse(), Toast.LENGTH_LONG).show();
