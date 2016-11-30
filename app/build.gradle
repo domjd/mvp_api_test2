@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "uk.domdudley.mvp_api_test"
+        applicationId "io.github.domjd.mvp_api_test"
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 1
