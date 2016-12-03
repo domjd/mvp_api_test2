@@ -12,58 +12,109 @@
     android:visibility="invisible"
     android:id="@+id/movieContentLayout">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/movieTitleTxt"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/posterImg"
-            android:paddingStart="10dp" />
+        android:layout_height="wrap_content"
+        android:id="@+id/topSection"
+        android:weightSum="10"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/posterImg"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:minHeight="300dp"
-            android:minWidth="200dp" />
+            android:layout_weight="4"/>
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/releaseDateTxt"
-            android:layout_below="@+id/movieTitleTxt"
-            android:layout_alignStart="@+id/movieTitleTxt"
-            android:paddingStart="10dp"
-            android:textStyle="italic" />
+            android:orientation="vertical"
+            android:id="@+id/movieInfo"
+            android:layout_toRightOf="@id/posterImg"
+            android:layout_weight="6"
+            android:weightSum="7">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Medium Text"
-            android:id="@+id/genreTxt"
-            android:layout_below="@+id/releaseDateTxt"
-            android:layout_alignStart="@+id/movieTitleTxt"
-            android:paddingStart="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/movieTitleTxt"
+                android:layout_weight="1"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/countryTxt"
-            android:layout_below="@+id/genreTxt"
-            android:layout_alignStart="@+id/movieTitleTxt"
-            android:paddingStart="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/releaseDateTxt"
+                android:layout_below="@+id/movieTitleTxt"
+                android:layout_alignStart="@+id/movieTitleTxt"
+                android:textStyle="italic"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Medium Text"
+                android:id="@+id/genreTxt"
+                android:layout_below="@+id/releaseDateTxt"
+                android:layout_alignStart="@+id/movieTitleTxt"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/countryTxt"
+                android:layout_below="@+id/genreTxt"
+                android:layout_alignStart="@+id/movieTitleTxt"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/imdbRating"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:text="IMDBb Rating"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/metaRating"
+                android:text="MetaScore"
+                android:layout_below="@id/imdbRating"
+                android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="1"/>
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:text="Add to collection"
+                android:id="@+id/addtocolllectionBtn"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/bottomSection"
+        android:layout_below="@id/topSection">
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,124 +123,44 @@
             android:id="@+id/plotTxt"
             android:paddingTop="10dp"
             android:layout_below="@+id/posterImg"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/directorTxt"
+            android:text="Director: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4"/>
 
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/posterImg"
-            android:layout_below="@+id/releaseDateTxt"
-            android:layout_above="@+id/plotTxt"
-            android:paddingTop="60dp"
-            android:id="@+id/tableLayout">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imdbRating"
-                    style="?android:attr/ratingBarStyleIndicator"
-                    android:text="IMDBb Rating"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerHorizontal="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:paddingStart="10dp"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/metaRating"
-                    android:text="MetaScore"
-                    android:layout_below="@id/imdbRating"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerHorizontal="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:paddingStart="10dp"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:text="Add to collection"
-                    android:id="@+id/addtocolllectionBtn"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_column="0" />
-            </TableRow>
-
-        </TableLayout>
-
-    <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/plotTxt"
-            android:layout_marginTop="23dp"
-            android:layout_alignEnd="@+id/tableLayout">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/directorTxt"
-                android:text="Director: "
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/actorsTxt"
-                android:text="Actors: "
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/writersTxt"
-                android:text="Writers: "
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/awardsTxt"
-                android:text="Awards: "
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/actorsTxt"
+            android:text="Actors: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4"/>
 
 
-    </TableLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/writersTxt"
+            android:text="Writers: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4"/>
 
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/awardsTxt"
+            android:text="Awards: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4"/>
 
+    </LinearLayout>
 
 </RelativeLayout>

@@ -24,8 +24,10 @@ import io.github.domjd.mvp_api_test.tools.ItemTouchHelperCallBack;
 public class collection extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView collectionRecycler;
-    private RecyclerView.LayoutManager layoutManager;
+    private GridLayoutManager layoutManager;
     private CollectionAdapter collectionAdapter;
+
+    private RecyclerView.ItemDecoration divider;
 
     RealmResults<Movie> collection;
 
@@ -50,8 +52,10 @@ public class collection extends AppCompatActivity implements ItemClickListener {
         collectionRecycler = (RecyclerView)findViewById(R.id.collectionRecycler);
         collectionRecycler.hasFixedSize();
 
-        layoutManager = new GridLayoutManager(this,3);
+        layoutManager = new GridLayoutManager(this, 3);
         collectionRecycler.setLayoutManager(layoutManager);
+        //divider = new DividerItemDecoration(collectionRecycler.getContext(), layoutManager.getOrientation());
+        //collectionRecycler.addItemDecoration(divider);
 
         collectionAdapter = new CollectionAdapter(collection, this);
         collectionRecycler.setAdapter(collectionAdapter);
@@ -73,7 +77,7 @@ public class collection extends AppCompatActivity implements ItemClickListener {
     @Override
     public void onItemClick(View view, int position) {
         final Movie movie = collection.get(position);
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, MovieDetail.class);
         Bundle b = new Bundle();
         b.putString("title", movie.getTitle());
         i.putExtras(b);
@@ -90,7 +94,7 @@ public class collection extends AppCompatActivity implements ItemClickListener {
                 .setPositiveButton("Search", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(collection.this, MainActivity.class);
+                        Intent i = new Intent(collection.this, MovieDetail.class);
                         Bundle b = new Bundle();
                         b.putString("title", searchText.getText().toString());
                         i.putExtras(b);

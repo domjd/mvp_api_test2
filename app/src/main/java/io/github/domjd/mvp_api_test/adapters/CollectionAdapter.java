@@ -66,7 +66,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
 
     @Override
     public void onBindViewHolder(CollectionAdapter.ViewHolder holder, int position) {
-       /* holder.movieTitle.setText(collection.get(position).getTitle());
+/*        holder.movieTitle.setText(collection.get(position).getTitle());
         holder.releaseDate.setText(collection.get(position).getReleased());
         holder.certificate.setText(collection.get(position).getRated());*/
 
